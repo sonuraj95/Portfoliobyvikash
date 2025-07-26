@@ -61,10 +61,10 @@ const About = () => {
               </div>
             </div>
             <div className="profile-details">
-              <h3>Alex Morgan</h3>
+              <h3>vikash </h3>
               <div className="role-tag">Full Stack Developer</div>
               <div className="location-tag">
-                <i className="fas fa-map-marker-alt"></i> San Francisco, CA
+                <i className="fas fa-map-marker-alt"></i> jharkand, Dumka
               </div>
             </div>
           </div>
@@ -78,7 +78,7 @@ const About = () => {
               <p>
                 From physics student to software engineer, my path has been anything but linear. 
                 I discovered coding through scientific simulations and fell in love with creating 
-                digital solutions to complex problems. Over the past 5 years, I've worked with startups 
+                digital solutions to complex problems. Over the past 2 years, I've worked with startups 
                 and enterprises to build scalable applications that make a difference.
               </p>
             </div>
