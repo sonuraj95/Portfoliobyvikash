@@ -35,10 +35,10 @@ export default function Home() {
               <span className="badge htmlcss">HTML/CSS</span>
             </div>
             <div className="hero-buttons">
-              <a href="#contact" className="primary-button hover-scale">
+              <a href="/contact" className="primary-button hover-scale">
                 Hire Me
               </a>
-              <a href="#projects" className="secondary-button hover-scale">
+              <a href="/Proje" className="secondary-button hover-scale">
                 See Projects
               </a>
             </div>

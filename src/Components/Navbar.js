@@ -39,6 +39,9 @@ export default function Navbar() {
           <a href="/Resume" className="nav-link">
             <span>Resume</span>
           </a>
+          <a href="/Contact" className="nav-link">
+            <span>Contact</span>
+          </a>
           <div className="nav-highlight"></div>
         </nav>
         
