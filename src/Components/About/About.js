@@ -1,170 +1,204 @@
-import React, { useEffect, useRef } from 'react';
+// About.jsx
+import React, { useEffect, useRef, useState } from 'react';
 import './About.css';
 
 const About = () => {
-  const profileRef = useRef(null);
+  const profileCardRef = useRef(null);
+  const [statsInView, setStatsInView] = useState(false);
+  const statsRef = useRef(null);
 
+  // 3D tilt effect
   useEffect(() => {
-    // Parallax effect for profile card
+    const card = profileCardRef.current;
+    if (!card) return;
+
     const handleMouseMove = (e) => {
-      if (!profileRef.current) return;
-      const card = profileRef.current;
-      const cardRect = card.getBoundingClientRect();
-      const cardCenterX = cardRect.left + cardRect.width / 2;
-      const cardCenterY = cardRect.top + cardRect.height / 2;
-      const angleY = (e.clientX - cardCenterX) / 20;
-      const angleX = (cardCenterY - e.clientY) / 20;
-      
-      card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+      const rect = card.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const rotateY = ((e.clientX - centerX) / rect.width) * 20; // max ±10deg
+      const rotateX = ((centerY - e.clientY) / rect.height) * 20;
+      card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    const handleMouseLeave = () => {
+      card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+    };
+
+    card.addEventListener('mousemove', handleMouseMove);
+    card.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      card.removeEventListener('mousemove', handleMouseMove);
+      card.removeEventListener('mouseleave', handleMouseLeave);
+    };
   }, []);
 
+  // Intersection Observer for stat counters
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStatsInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Animated counter component
+  const AnimatedNumber = ({ target, suffix = '', duration = 2000 }) => {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+      if (!statsInView) return;
+      let start = 0;
+      const increment = target / (duration / 16);
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= target) {
+          setCount(target);
+          clearInterval(timer);
+        } else {
+          setCount(Math.floor(start));
+        }
+      }, 16);
+      return () => clearInterval(timer);
+    }, [target, duration, statsInView]);
+
+    return <span>{count}{suffix}</span>;
+  };
+
   return (
-    <section id="about" className="about-section">
-      <div className="container">
-        <div className="section-header">
-          <div className="header-decoration">
-            <div className="deco-line"></div>
-            <div className="deco-dot"></div>
-          </div>
-          <h2 className="section-title">
-            <span className="title-highlight">About</span> Me
+    <section id="about" className="about-section-new">
+      <div className="about-container">
+        {/* Header */}
+        <div className="about-header">
+          <span className="header-badge">Who am I?</span>
+          <h2 className="about-title">
+            Crafting <span className="title-gradient">Digital</span> Experiences
           </h2>
-          <p className="section-subtitle">Beyond the code: My journey, passion, and vision</p>
+          <p className="about-subtitle">
+            Full‑stack developer with a passion for clean code and user‑centric design.
+          </p>
         </div>
 
-        <div className="about-grid">
-          <div className="profile-card" ref={profileRef}>
-            <div className="profile-3d">
-              <div className="profile-image">
-                <div className="glow-effect"></div>
+        {/* Main Grid */}
+        <div className="about-grid-new">
+          {/* Left Column - Profile & Bio */}
+          <div className="about-left">
+            <div className="profile-card-new" ref={profileCardRef}>
+              <div className="profile-glow"></div>
+              <div className="profile-image-wrapper">
+                <div className="profile-avatar">
+                  <span className="avatar-emoji">👨‍💻</span>
+                </div>
+                <div className="profile-ring"></div>
               </div>
-              <div className="tech-orbits">
-                <div className="orbit orbit-1">
-                  <div className="tech-orb react" data-tooltip="React">
-                    <i className="fab fa-react"></i>
-                  </div>
-                </div>
-                <div className="orbit orbit-2">
-                  <div className="tech-orb node" data-tooltip="Node.js">
-                    <i className="fab fa-node-js"></i>
-                  </div>
-                </div>
-                <div className="orbit orbit-3">
-                  <div className="tech-orb python" data-tooltip="Python">
-                    <i className="fab fa-python"></i>
-                  </div>
+              <div className="profile-info">
+                <h3 className="profile-name">Vikash Kumar</h3>
+                <p className="profile-title">Full Stack Developer</p>
+                <div className="profile-location">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                    <circle cx="12" cy="9" r="2.5" />
+                  </svg>
+                  Jharkhand, Dumka
                 </div>
               </div>
             </div>
-            <div className="profile-details">
-              <h3>vikash </h3>
-              <div className="role-tag">Full Stack Developer</div>
-              <div className="location-tag">
-                <i className="fas fa-map-marker-alt"></i> jharkand, Dumka
-              </div>
+
+            <div className="bio-card">
+              <div className="bio-icon">✨</div>
+              <p className="bio-text">
+                Former physics student turned developer. I blend analytical thinking with creative
+                problem‑solving to build applications that are both robust and delightful to use.
+                Over 2 years of experience across startups and enterprise projects.
+              </p>
             </div>
           </div>
 
-          <div className="about-content">
-            <div className="content-block">
-              <div className="block-header">
-                <div className="block-icon">🚀</div>
-                <h3>My Journey</h3>
+          {/* Right Column - Skills & Stats */}
+          <div className="about-right">
+            <div className="skills-orbital">
+              <h4 className="skills-heading">Tech Stack</h4>
+              <div className="orbital-container">
+                <div className="orbital-center">⚡</div>
+                <div className="orbital-item" style={{ '--angle': '0deg', '--distance': '120px' }}>
+                  <span className="tech-badge react">React</span>
+                </div>
+                <div className="orbital-item" style={{ '--angle': '72deg', '--distance': '120px' }}>
+                  <span className="tech-badge node">Node.js</span>
+                </div>
+                <div className="orbital-item" style={{ '--angle': '144deg', '--distance': '120px' }}>
+                  <span className="tech-badge python">Python</span>
+                </div>
+                <div className="orbital-item" style={{ '--angle': '216deg', '--distance': '120px' }}>
+                  <span className="tech-badge aws">AWS</span>
+                </div>
+                <div className="orbital-item" style={{ '--angle': '288deg', '--distance': '120px' }}>
+                  <span className="tech-badge ts">TypeScript</span>
+                </div>
               </div>
-              <p>
-                From physics student to software engineer, my path has been anything but linear. 
-                I discovered coding through scientific simulations and fell in love with creating 
-                digital solutions to complex problems. Over the past 2 years, I've worked with startups 
-                and enterprises to build scalable applications that make a difference.
-              </p>
             </div>
 
-            <div className="content-block">
-              <div className="block-header">
-                <div className="block-icon">💡</div>
-                <h3>Philosophy</h3>
-              </div>
-              <p>
-                I believe technology should serve humanity, not the other way around. My approach 
-                combines technical excellence with human-centered design. I focus on creating 
-                intuitive experiences that solve real problems while pushing technical boundaries.
-              </p>
+            <div className="core-competencies">
+              <h4>Core Competencies</h4>
+              <ul className="competencies-list">
+                <li>Full Stack Architecture</li>
+                <li>Cloud & DevOps (AWS, Docker)</li>
+                <li>Performance Optimization</li>
+                <li>Accessibility (a11y)</li>
+                <li>Technical Leadership</li>
+              </ul>
             </div>
 
-            <div className="stats-grid">
-              <div className="stat-item">
-                <div className="stat-value">50+</div>
+            <div className="stats-container" ref={statsRef}>
+              <div className="stat-card">
+                <div className="stat-number">
+                  <AnimatedNumber target={50} suffix="+" />
+                </div>
                 <div className="stat-label">Projects</div>
               </div>
-              <div className="stat-item">
-                <div className="stat-value">500+</div>
+              <div className="stat-card">
+                <div className="stat-number">
+                  <AnimatedNumber target={500} suffix="+" />
+                </div>
                 <div className="stat-label">Cups of Coffee</div>
               </div>
-              <div className="stat-item">
-                <div className="stat-value">15+</div>
+              <div className="stat-card">
+                <div className="stat-number">
+                  <AnimatedNumber target={15} suffix="+" />
+                </div>
                 <div className="stat-label">Technologies</div>
               </div>
-              <div className="stat-item">
-                <div className="stat-value">∞</div>
+              <div className="stat-card">
+                <div className="stat-number">∞</div>
                 <div className="stat-label">Curiosity</div>
               </div>
             </div>
           </div>
-
-          <div className="skill-visualization">
-            <div className="skill-radar">
-              <div className="radar-grid">
-                <div className="grid-circle"></div>
-                <div className="grid-circle"></div>
-                <div className="grid-circle"></div>
-                <div className="grid-axis"></div>
-                <div className="grid-axis"></div>
-                <div className="grid-axis"></div>
-                <div className="grid-axis"></div>
-                
-                <div className="skill-point frontend" style={{ '--size': '90%', '--angle': '30deg' }}>
-                  <div className="point-label">Frontend</div>
-                </div>
-                <div className="skill-point backend" style={{ '--size': '85%', '--angle': '110deg' }}>
-                  <div className="point-label">Backend</div>
-                </div>
-                <div className="skill-point devops" style={{ '--size': '75%', '--angle': '190deg' }}>
-                  <div className="point-label">DevOps</div>
-                </div>
-                <div className="skill-point uiux" style={{ '--size': '80%', '--angle': '270deg' }}>
-                  <div className="point-label">UI/UX</div>
-                </div>
-              </div>
-            </div>
-            <div className="skill-legend">
-              <h4>Core Competencies</h4>
-              <ul>
-                <li>Full Stack Development</li>
-                <li>Cloud Architecture</li>
-                <li>Performance Optimization</li>
-                <li>Accessibility Advocacy</li>
-                <li>Technical Mentoring</li>
-              </ul>
-            </div>
-          </div>
         </div>
 
-        <div className="signature">
-          <div className="signature-line"></div>
-          {/* <div className="signature-text">Creating with purpose</div> */}
-          <div className="signature-line"></div>
+        {/* Quote Footer */}
+        <div className="about-footer">
+          <div className="footer-line"></div>
+          <p className="footer-quote">“Creating with purpose, learning without limits.”</p>
+          <div className="footer-line"></div>
         </div>
       </div>
 
-      <div className="background-elements">
-        <div className="bg-shape shape-1"></div>
-        <div className="bg-shape shape-2"></div>
-        <div className="bg-shape shape-3"></div>
-      </div>
+      {/* Background decorative elements */}
+      <div className="bg-blob blob-1"></div>
+      <div className="bg-blob blob-2"></div>
+      <div className="bg-grid"></div>
     </section>
   );
 };
