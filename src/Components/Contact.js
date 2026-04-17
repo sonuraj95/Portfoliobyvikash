@@ -28,7 +28,7 @@ export default function ContactCard() {
               </div>
               <div className="contact-item">
                 <span className="contact-text">sonuraj0789123@gmail.com
-                  <span> hello vikash</span >
+                  
 </span>
               </div>
               <div className="contact-item">
