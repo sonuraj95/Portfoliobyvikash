@@ -90,11 +90,11 @@ const Footer = () => {
               </li>
               <li>
                 <i className="fas fa-phone-alt"></i>
-                <a href="tel:+919876543210">+91 98765 43210</a>
+                <a href="tel:+919876543210">+91 8252895546</a>
               </li>
               <li>
                 <i className="fas fa-envelope-open-text"></i>
-                <a href="mailto:hello@vikash.dev">hello@vikash.dev</a>
+                <a href="mailto:hello@vikash.dev">vikashkr7882@gmail.com</a>
               </li>
             </ul>
             <div className="newsletter-signup">
