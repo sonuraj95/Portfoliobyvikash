@@ -113,11 +113,11 @@ const Footer = () => {
             © {currentYear} Vikash Kumar. All rights reserved.
           </div>
           <div className="legal-links">
-            <a href="#">Privacy</a>
+            <a href="/">Privacy</a>
             <span className="divider-dot"></span>
-            <a href="#">Terms</a>
+            <a href="/">Terms</a>
             <span className="divider-dot"></span>
-            <a href="#">Cookies</a>
+            <a href="/">Cookies</a>
           </div>
           <div className="footer-credit">
             <span className="pulse-dot"></span>
