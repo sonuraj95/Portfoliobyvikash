@@ -1,80 +1,78 @@
-/* PDFViewer.css */
+/* Resume.css */
+
 .pdf-viewer-wrapper {
-  height: 100vh;
   width: 100%;
-  background-color: #f8f9fa;
+  height: 100vh;
+  max-width: 900px;
+  margin: 0 auto;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  background: #1e1e1e;
   border-radius: 8px;
+}
+
+/* react-pdf-viewer root container needs explicit height, 
+   otherwise it overflows the parent */
+.pdf-viewer-wrapper .rpv-core__viewer {
+  height: 100% !important;
+  width: 100% !important;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Toolbar styling */
-.rpv-default-layout__toolbar {
-  background-color: #2c3e50 !important;
-  padding: 8px 16px !important;
+/* Inner scroll area - this is where the actual PDF pages scroll */
+.pdf-viewer-wrapper .rpv-core__inner-pages {
+  overflow-y: auto !important;
 }
 
-/* Button styling */
-.rpv-default-layout__toolbar-button {
-  color: #ecf0f1 !important;
-  transition: all 0.2s ease !important;
+/* Prevent the PDF page canvas from exceeding container width */
+.pdf-viewer-wrapper .rpv-core__page-layer {
+  max-width: 100% !important;
 }
 
-.rpv-default-layout__toolbar-button:hover {
-  background-color: #34495e !important;
-  transform: scale(1.05);
+.pdf-viewer-wrapper canvas {
+  max-width: 100% !important;
+  height: auto !important;
 }
 
-/* Page navigation */
-.rpv-default-layout__page-navigation {
-  background-color: #3498db !important;
-  color: white !important;
-  font-weight: 600 !important;
+/* Toolbar shouldn't shrink or wrap awkwardly */
+.pdf-viewer-wrapper .rpv-toolbar {
+  flex-shrink: 0;
+  overflow-x: auto;
 }
 
-/* Document container */
-.rpv-core__inner-page {
-  background-color: white !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  margin: 8px auto !important;
+/* Sidebar (thumbnails/outline) fixed width, shouldn't push content out */
+.pdf-viewer-wrapper .rpv-default-layout__sidebar {
+  width: 220px !important;
+  max-width: 220px !important;
+  flex-shrink: 0;
 }
 
-/* Progress bar */
-.rpv-core__progress-bar {
-  background-color: #3498db !important;
-  height: 4px !important;
+.pdf-viewer-wrapper .rpv-default-layout__main {
+  overflow: hidden;
+  flex: 1;
 }
 
-/* Thumbnails sidebar */
-.rpv-default-layout__sidebar {
-  background-color: #f1f3f5 !important;
-  border-right: 1px solid #e9ecef !important;
-}
-
-/* Responsive adjustments */
+/* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
+  .pdf-viewer-wrapper {
+    height: 85vh;
+    max-width: 100%;
+    border-radius: 0;
+  }
+
+  .pdf-viewer-wrapper .rpv-default-layout__sidebar {
+    display: none; /* thumbnails/outline sidebar hide on mobile to save space */
+  }
+}
+
+@media (max-width: 480px) {
   .pdf-viewer-wrapper {
     height: 80vh;
   }
-  
-  .rpv-default-layout__toolbar {
-    flex-wrap: wrap;
-    height: auto !important;
+
+  .pdf-viewer-wrapper .rpv-toolbar {
+    font-size: 0.8rem;
   }
-}
-
-/* Dark mode support */
-[data-theme='dark'] .pdf-viewer-wrapper {
-  background-color: #1a1a1a;
-}
-
-[data-theme='dark'] .rpv-core__inner-page {
-  background-color: #2d2d2d !important;
-}
-
-[data-theme='dark'] .rpv-default-layout__sidebar {
-  background-color: #252525 !important;
-  border-right: 1px solid #333 !important;
 }

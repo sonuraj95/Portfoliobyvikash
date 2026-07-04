@@ -35,11 +35,16 @@ const Footer = () => {
               <a href="https://www.linkedin.com/in/vikash-kumar-b77772351/" className="social-icon" aria-label="LinkedIn">
                 <i className="fab fa-linkedin-in"></i>
               </a>
+              <a href="https://github.com/sonuraj95" className="social-icon" aria-label="GitHub">
+                <i className="fab fa-github"></i>
+              </a>
               <a href="/Contact" className="social-icon" aria-label="Twitter">
-                <i className="fab fa-x-twitter"></i>
+<i class="fa-regular fa-address-book"></i>
+
               </a>
               <a href="https://www.instagram.com/mr_vikash._kr/?hl=en" className="social-icon" aria-label="Email">
-                <i className="fas fa-envelope"></i>
+<i class="fa-brands fa-instagram"></i>
+
               </a>
             </div>
           </div>
@@ -51,11 +56,11 @@ const Footer = () => {
               Explore
             </h4>
             <ul className="footer-nav">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#blog">Blog</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="/Home">Home</a></li>
+              <li><a href="/About">About</a></li>
+              <li><a href="/Projects">Projects</a></li>
+              <li><a href="#Blog">Blog</a></li>
+              <li><a href="/Contact">Contact</a></li>
             </ul>
           </div>
 
@@ -88,13 +93,10 @@ const Footer = () => {
                 <i className="fas fa-map-pin"></i>
                 <span>Jharkhand, Dumka, India</span>
               </li>
-              <li>
-                <i className="fas fa-phone-alt"></i>
-                <a href="tel:+919876543210">+91 8252895546</a>
-              </li>
+              
               <li>
                 <i className="fas fa-envelope-open-text"></i>
-                <a href="mailto:hello@vikash.dev">vikashkr7882@gmail.com</a>
+                <a href="mailto:hello@vikash.dev">sonuraj0789123@gmail.com</a>
               </li>
             </ul>
             <div className="newsletter-signup">
