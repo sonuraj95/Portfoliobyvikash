@@ -2,6 +2,29 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './About.css';
 
+// Animated counter component (moved outside so it doesn't get recreated on every render)
+const AnimatedNumber = ({ target, suffix = '', duration = 2000, statsInView }) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!statsInView) return;
+    let start = 0;
+    const increment = target / (duration / 16);
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= target) {
+        setCount(target);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 16);
+    return () => clearInterval(timer);
+  }, [target, duration, statsInView]);
+
+  return <span>{count}{suffix}</span>;
+};
+
 const About = () => {
   const profileCardRef = useRef(null);
   const [statsInView, setStatsInView] = useState(false);
@@ -52,29 +75,6 @@ const About = () => {
 
     return () => observer.disconnect();
   }, []);
-
-  // Animated counter component
-  const AnimatedNumber = ({ target, suffix = '', duration = 2000 }) => {
-    const [count, setCount] = useState(0);
-
-    useEffect(() => {
-      if (!statsInView) return;
-      let start = 0;
-      const increment = target / (duration / 16);
-      const timer = setInterval(() => {
-        start += increment;
-        if (start >= target) {
-          setCount(target);
-          clearInterval(timer);
-        } else {
-          setCount(Math.floor(start));
-        }
-      }, 16);
-      return () => clearInterval(timer);
-    }, [target, duration, statsInView]);
-
-    return <span>{count}{suffix}</span>;
-  };
 
   return (
     <section id="about" className="about-section-new">
@@ -175,19 +175,19 @@ const About = () => {
             <div className="stats-container" ref={statsRef}>
               <div className="stat-card">
                 <div className="stat-number">
-                  <AnimatedNumber target={10} suffix="+" />
+                  <AnimatedNumber target={10} suffix="+" statsInView={statsInView} />
                 </div>
                 <div className="stat-label">Projects</div>
               </div>
               <div className="stat-card">
                 <div className="stat-number">
-                  <AnimatedNumber target={5} suffix="+" />
+                  <AnimatedNumber target={5} suffix="+" statsInView={statsInView} />
                 </div>
                 <div className="stat-label">Technologies</div>
               </div>
               <div className="stat-card">
                 <div className="stat-number">
-                  <AnimatedNumber target={100} suffix="%" />
+                  <AnimatedNumber target={100} suffix="%" statsInView={statsInView} />
                 </div>
                 <div className="stat-label">Dedication</div>
               </div>
