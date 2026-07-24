@@ -34,7 +34,7 @@ const Projects = () => {
   "title": "Gym Management & Fitness Portal",
   "shortDescription": "Full-stack fitness platform featuring membership plans, workout scheduling, and admin control.",
   "fullDescription": "A modern web application built with the MERN stack designed for fitness centers. Features include secure user authentication, online membership subscriptions, personal trainer booking systems, interactive class schedules, and a comprehensive admin panel for tracking sales, active members, and attendance.",
-  "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=400&fit=crop",
+  "image": "https://ik.imagekit.io/uh1qomxg1/image.png",
   "technologies": ["React", "Node.js", "Django", "Figma", "Tailwind CSS", "Stripe","PostgreSQL"],
   "category": "web",
   "demoUrl": "https://agent-6a62451c51f49--creative-stroopwafel-b18415.netlify.app/",
