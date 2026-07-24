@@ -2,6 +2,90 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './About.css';
 
+// Memory Game Component
+const MemoryGame = () => {
+  const [tiles, setTiles] = useState([]);
+  const [flipped, setFlipped] = useState([]);
+  const [matched, setMatched] = useState([]);
+  const [moves, setMoves] = useState(0);
+  const [gameWon, setGameWon] = useState(false);
+
+  // Initialize game
+  useEffect(() => {
+    const numbers = [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6];
+    setTiles(numbers.sort(() => Math.random() - 0.5));
+  }, []);
+
+  // Check if game is won
+  useEffect(() => {
+    if (matched.length === 6 && matched.length > 0) {
+      setGameWon(true);
+    }
+  }, [matched]);
+
+  const handleTileClick = (index) => {
+    if (flipped.includes(index) || matched.includes(index) || flipped.length === 2) return;
+
+    const newFlipped = [...flipped, index];
+    setFlipped(newFlipped);
+
+    if (newFlipped.length === 2) {
+      setMoves(moves + 1);
+      
+      if (tiles[newFlipped[0]] === tiles[newFlipped[1]]) {
+        setMatched([...matched, newFlipped[0], newFlipped[1]]);
+        setFlipped([]);
+      } else {
+        setTimeout(() => setFlipped([]), 800);
+      }
+    }
+  };
+
+  const resetGame = () => {
+    const numbers = [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6];
+    setTiles(numbers.sort(() => Math.random() - 0.5));
+    setFlipped([]);
+    setMatched([]);
+    setMoves(0);
+    setGameWon(false);
+  };
+
+  return (
+    <div className="memory-game-card">
+      <div className="game-header">
+        <h4>Memory Game 🧠</h4>
+        <span className="game-stats">Moves: {moves}</span>
+      </div>
+
+      <div className="memory-grid">
+        {tiles.map((num, index) => (
+          <button
+            key={index}
+            className={`memory-tile ${flipped.includes(index) || matched.includes(index) ? 'flipped' : ''}`}
+            onClick={() => handleTileClick(index)}
+            disabled={matched.includes(index)}
+          >
+            <span className="tile-inner">
+              {flipped.includes(index) || matched.includes(index) ? num : '?'}
+            </span>
+          </button>
+        ))}
+      </div>
+
+      {gameWon && (
+        <div className="game-won">
+          <p>🎉 Won in {moves} moves!</p>
+          <button className="reset-btn" onClick={resetGame}>Play Again</button>
+        </div>
+      )}
+
+      {!gameWon && (
+        <button className="reset-btn" onClick={resetGame}>Reset</button>
+      )}
+    </div>
+  );
+};
+
 // Animated counter component (moved outside so it doesn't get recreated on every render)
 const AnimatedNumber = ({ target, suffix = '', duration = 2000, statsInView }) => {
   const [count, setCount] = useState(0);
@@ -171,6 +255,8 @@ const About = () => {
                 <li>Problem Solving</li>
               </ul>
             </div>
+
+            <MemoryGame />
 
             <div className="stats-container" ref={statsRef}>
               <div className="stat-card">

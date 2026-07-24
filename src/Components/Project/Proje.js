@@ -10,25 +10,25 @@ const Projects = () => {
   const observerRef = useRef(null);
 
   const projects = [
-    {
-      id: 1,
-      title: "E-Commerce Platform",
-      shortDescription: "Full‑stack e‑commerce with payment integration and admin dashboard.",
-      fullDescription: "A comprehensive e‑commerce solution built with the MERN stack. Features include JWT authentication, Stripe payment processing, product inventory management, order tracking, and an analytics dashboard for admins. The frontend is responsive and optimized for performance with lazy loading and code splitting.",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe", "Redux", "Express"],
-      category: "web",
-      demoUrl: "#",
-      githubUrl: "#",
-      date: "2024-03-15",
-      status: "completed",
-      highlights: [
-        "Secure payment processing with Stripe",
-        "Role‑based access control (Admin/Customer)",
-        "Real‑time inventory updates",
-        "Responsive design with dark mode"
-      ]
-    },
+     {
+  "id": 1,
+  "title": "School Website & Management Portal",
+  "shortDescription": "Full‑stack school platform featuring online fee payments, student management, and an admin dashboard.",
+  "fullDescription": "A comprehensive school web platform built with the MERN stack. Features include secure JWT authentication, online fee processing, student and staff records management, digital notice boards, report card generation, and real-time attendance tracking. Designed with a responsive UI to ensure smooth accessibility across devices for parents, students, and administration.",
+  "image": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&h=400&fit=crop",
+  "technologies": ["React", "Node.js", "MongoDB", "Express", "Redux", "Tailwind CSS"],
+  "category": "web",
+  "demoUrl": "https://schoolwebsite-07-alpha.vercel.app/",
+  "githubUrl": "https://github.com/sonuraj95/schoolwebsite__07",
+  "date": "2024-03-15",
+  "status": "completed",
+  "highlights": [
+    "Online fee collection with automated digital receipts",
+    "Role-based access control (Admin, Teacher, Student, Parent)",
+    "Interactive digital notice board and academic calendar",
+    "Student attendance tracking and performance reports"
+  ]
+},
     {
       id: 2,
       title: "TaskFlow",
