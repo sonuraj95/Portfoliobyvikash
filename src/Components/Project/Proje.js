@@ -16,7 +16,7 @@ const Projects = () => {
   "shortDescription": "Full‑stack school platform featuring online fee payments, student management, and an admin dashboard.",
   "fullDescription": "A comprehensive school web platform built with the MERN stack. Features include secure JWT authentication, online fee processing, student and staff records management, digital notice boards, report card generation, and real-time attendance tracking. Designed with a responsive UI to ensure smooth accessibility across devices for parents, students, and administration.",
   "image": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&h=400&fit=crop",
-  "technologies": ["React", "Node.js", "MongoDB", "Express", "Redux", "Tailwind CSS"],
+  "technologies": ["React", "Node.js", "Django", "Figma", "Tailwind CSS", "Stripe","PostgreSQL"],
   "category": "web",
   "demoUrl": "https://schoolwebsite-07-alpha.vercel.app/",
   "githubUrl": "https://github.com/sonuraj95/schoolwebsite__07",
@@ -30,24 +30,24 @@ const Projects = () => {
   ]
 },
     {
-      id: 2,
-      title: "TaskFlow",
-      shortDescription: "Collaborative task management with real‑time sync and drag‑drop boards.",
-      fullDescription: "TaskFlow is a Trello‑inspired project management tool. Users can create boards, lists, and cards with drag‑and‑drop functionality. Real‑time updates are powered by Socket.io. Includes team invitations, comments, file attachments, and activity logs.",
-      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop",
-      technologies: ["React", "Firebase", "Material‑UI", "Socket.io", "React Beautiful DnD"],
-      category: "web",
-      demoUrl: "#",
-      githubUrl: "#",
-      date: "2024-02-20",
-      status: "completed",
-      highlights: [
-        "Drag‑and‑drop Kanban boards",
-        "Real‑time collaboration",
-        "File uploads with Firebase Storage",
-        "Customizable board themes"
-      ]
-    },
+  "id": 2,
+  "title": "Gym Management & Fitness Portal",
+  "shortDescription": "Full-stack fitness platform featuring membership plans, workout scheduling, and admin control.",
+  "fullDescription": "A modern web application built with the MERN stack designed for fitness centers. Features include secure user authentication, online membership subscriptions, personal trainer booking systems, interactive class schedules, and a comprehensive admin panel for tracking sales, active members, and attendance.",
+  "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=400&fit=crop",
+  "technologies": ["React", "Node.js", "Django", "Figma", "Tailwind CSS", "Stripe","PostgreSQL"],
+  "category": "web",
+  "demoUrl": "https://agent-6a62451c51f49--creative-stroopwafel-b18415.netlify.app/",
+  "githubUrl": "https://github.com/sonuraj95/gymmanagement",
+  "date": "2024-04-10",
+  "status": "completed",
+  "highlights": [
+    "Online membership subscription & payment gateway integration",
+    "Interactive class scheduling and personal trainer booking",
+    "Role-based access control (Admin, Trainer, Member)",
+    "Member dashboard tracking active plans and attendance history"
+  ]
+},
     {
       id: 3,
       title: "WeatherPulse",
