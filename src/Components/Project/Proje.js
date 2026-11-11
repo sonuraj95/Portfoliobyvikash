@@ -49,43 +49,47 @@ const Projects = () => {
   ]
 },
     {
-      id: 3,
-      title: "WeatherPulse",
-      shortDescription: "Cross‑platform weather app with interactive maps and forecasts.",
-      fullDescription: "A React Native mobile app that provides hyperlocal weather forecasts using OpenWeatherMap API. Features include animated weather icons, 7‑day forecast, air quality index, and interactive radar maps. The app supports geolocation and favorite locations saved locally.",
-      image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=600&h=400&fit=crop",
-      technologies: ["React Native", "OpenWeather API", "Redux Toolkit", "React Navigation"],
-      category: "mobile",
-      demoUrl: "#",
-      githubUrl: "#",
-      date: "2024-01-10",
-      status: "completed",
-      highlights: [
-        "Live weather radar maps",
-        "Offline support with cached data",
-        "Push notifications for severe alerts",
-        "Smooth animations with Reanimated"
-      ]
-    },
+  id: 3,
+  title: "Hotel Luxe",
+  shortDescription: "Modern hotel website with elegant design and seamless room booking experience.",
+  fullDescription: "A professional hotel website built with React, designed to showcase hotel rooms, facilities, dining experiences, and premium hospitality services. Features include room galleries, booking inquiry forms, service sections, customer testimonials, location maps, and a responsive design for all devices.",
+  image: "./public/images/hotel.png",
+  technologies: ["React", "JavaScript", "Tailwind CSS", "Framer Motion"],
+  category: "web",
+  demoUrl: "https://hotelwebsiteme.vercel.app/",
+  githubUrl: "https://github.com/sonuraj95/hotel_website_",
+  date: "2026-11-11",
+  status: "completed",
+  highlights: [
+    "Elegant hotel homepage design",
+    "Room and suite showcase",
+    "Online booking inquiry system",
+    "Hotel facilities and services section",
+    "Photo gallery and testimonials",
+    "Fully responsive mobile-friendly design"
+  ]
+},
     {
-      id: 4,
-      title: "Portfolio 2024",
-      shortDescription: "Modern developer portfolio with 3D elements and smooth page transitions.",
-      fullDescription: "A personal portfolio website showcasing projects and skills. Built with Next.js for SEO and performance. Features include a custom 3D background with Three.js, page transitions with Framer Motion, and a blog section powered by MDX.",
-      image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&h=400&fit=crop",
-      technologies: ["Next.js", "Tailwind CSS", "Framer Motion", "Three.js", "Vercel"],
-      category: "web",
-      demoUrl: "#",
-      githubUrl: "#",
-      date: "2023-12-05",
-      status: "completed",
-      highlights: [
-        "Server‑side rendering for fast loads",
-        "Interactive 3D background",
-        "Blog with MDX support",
-        "100 Lighthouse score"
-      ]
-    },
+  id: 4,
+  title: "MOON Photography",
+  shortDescription: "Professional photography portfolio website showcasing creative work, photography services, and memorable moments.",
+  fullDescription: "A modern and visually engaging photographer website built with React. Designed to showcase photography portfolios, wedding shoots, pre-wedding sessions, events, and creative projects. Features include a cinematic video hero section, beautiful photo galleries, service showcases, client testimonials, contact information, and a fully responsive design.",
+  image: "YOUR_PHOTOGRAPHY_WEBSITE_IMAGE_URL",
+  technologies: ["React", "JavaScript", "Tailwind CSS", "Framer Motion"],
+  category: "web",
+  demoUrl: "YOUR_LIVE_DEMO_URL",
+  githubUrl: "#",
+  date: "2026-11-11",
+  status: "completed",
+  highlights: [
+    "Cinematic video hero section",
+    "Professional photography portfolio",
+    "Wedding and pre-wedding gallery",
+    "Photography services showcase",
+    "Smooth animations and transitions",
+    "Responsive mobile-friendly design"
+  ]
+},
     {
       id: 5,
       title: "Insight Dashboard",
