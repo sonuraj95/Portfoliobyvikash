@@ -53,7 +53,7 @@ const Projects = () => {
   title: "Hotel Luxe",
   shortDescription: "Modern hotel website with elegant design and seamless room booking experience.",
   fullDescription: "A professional hotel website built with React, designed to showcase hotel rooms, facilities, dining experiences, and premium hospitality services. Features include room galleries, booking inquiry forms, service sections, customer testimonials, location maps, and a responsive design for all devices.",
-  image: "./public/images/hotel.png",
+  image: "https://ik.imagekit.io/vkTrendji/website%20porfolio%20/Screenshot%20(1095).png",
   technologies: ["React", "JavaScript", "Tailwind CSS", "Framer Motion"],
   category: "web",
   demoUrl: "https://hotelwebsiteme.vercel.app/",
