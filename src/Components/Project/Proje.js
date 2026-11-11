@@ -90,25 +90,30 @@ const Projects = () => {
     "Responsive mobile-friendly design"
   ]
 },
-    {
-      id: 5,
-      title: "Insight Dashboard",
-      shortDescription: "Business intelligence dashboard with interactive data visualizations.",
-      fullDescription: "A dashboard for visualizing complex datasets with D3.js charts. Connects to a Flask backend that aggregates data from PostgreSQL. Users can create custom widgets, filter by date ranges, and export reports as PDF. Includes real‑time data streaming for live metrics.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-      technologies: ["D3.js", "Python", "Flask", "PostgreSQL", "WebSockets"],
-      category: "data",
-      demoUrl: "#",
-      githubUrl: "#",
-      date: "2024-04-01",
-      status: "in-progress",
-      highlights: [
-        "Customizable dashboard widgets",
-        "Real‑time data updates",
-        "Advanced filtering and drill‑down",
-        "PDF report generation"
-      ]
-    },
+
+{
+  id: 5,
+  title: "Mocktales Cafe",
+  shortDescription: "Modern and aesthetic cafe website showcasing delicious food, beautiful ambience, events, and memorable experiences.",
+  fullDescription: "A modern and visually appealing website for Mocktales Cafe, built with React. The website highlights the cafe's aesthetic green interiors, food menu, fast food, Chinese cuisine, pizzas, burgers, drinks, and desserts. It features dedicated sections for cafe introduction, menu categories, ambience gallery, birthday celebrations, small gatherings, college meetups, and contact information. Designed to create an engaging online presence and help customers discover the cafe, explore its offerings, and plan their visits.",
+  image: "https://ik.imagekit.io/vkTrendji/website%20porfolio%20/image.png",
+  technologies: ["React", "JavaScript", "Tailwind CSS", "Framer Motion"],
+  category: "web",
+  demoUrl: "https://agent-6ab0c83270c940--aesthetic-queijadas-f1a451.netlify.app/",
+  githubUrl: "#",
+  date: "2026-11-11",
+  status: "completed",
+  highlights: [
+    "Modern and aesthetic cafe website design",
+    "Interactive food menu with multiple categories",
+    "Beautiful cafe ambience and photo gallery",
+    "Birthday celebrations and event showcases",
+    "Small gatherings and college meetup sections",
+    "Instagram integration for event updates",
+    "Responsive design for mobile and desktop"
+  ]
+},
+
     {
       id: 6,
       title: "ChurnPredict ML",
